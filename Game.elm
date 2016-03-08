@@ -35,7 +35,7 @@ initialModel =
           , LevelInfo  4 level_04 False 0 0 0
           , LevelInfo  5 level_05 False 0 0 0
           , LevelInfo  6 level_06 False 0 0 0
-          , LevelInfo  7 level_08 False 0 0 0
+          , LevelInfo  7 level_07 False 0 0 0
           , LevelInfo  8 level_08 False 0 0 0
           , LevelInfo  9 level_09 False 0 0 0
           , LevelInfo 10 level_10 False 0 0 0
