@@ -116,6 +116,7 @@ update msg model =
                 { model
                 | time      = model.time
                 , timeStart = model.time
+                , current   = current
                 } ! []
 
 updateWalk : (Int, Int) -> Model -> Model
