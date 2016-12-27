@@ -9,8 +9,20 @@ import Svg.Events     exposing (..)
 import Msg   exposing (..)
 import Model exposing (..)
 
-import Types       exposing (Block(..), Pos, blockToUrl)
+import Types       exposing (Block(..), Pos)
 import Definitions exposing (..)
+
+blockToUrl : Block -> String
+blockToUrl block =
+    case block of
+        BFloor ->
+            "./img/2.gif"
+
+        BWall ->
+            "./img/1.gif"
+
+        BVoid ->
+            ""
 
 render : (Int, Int) -> String -> Svg Msg
 render (x_, y_) image_path =
@@ -22,8 +34,6 @@ render (x_, y_) image_path =
         else
             image [ xlinkHref image_path, x <| toString x__, y <| toString y__
                 , width "32px", height "32px" ] []
-
-
 
 tile : Tile -> Svg Msg
 tile tile =
