@@ -1,3 +1,0 @@
-# Ignore index.html from language statistics
-exclude_paths:
-- ^index\.html$
