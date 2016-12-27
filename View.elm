@@ -31,15 +31,15 @@ tile tile =
 
 hole : Pos -> Svg Msg
 hole pos =
-    render pos "/img/7.gif"
+    render pos "./img/7.gif"
 
 player : Bool -> Pos -> Svg Msg
 player holed pos =
-    render pos (if holed then "/img/6.gif" else "/img/5.gif")
+    render pos (if holed then "./img/6.gif" else "./img/5.gif")
 
 box : Bool -> Pos -> Svg Msg
 box correct pos =
-    render pos (if correct then "/img/4.gif" else "/img/3.gif")
+    render pos (if correct then "./img/4.gif" else "./img/3.gif")
 
 drawLevel : Time -> Level -> Svg Msg
 drawLevel time_passed level =
