@@ -49,7 +49,10 @@ update msg model =
     case msg of
         Nop   ->
             model ! []
-            
+        
+        PlayerAnimation ->
+            { model | player_animation = not model.player_animation } ! []
+
         Menu  ->
             { model | state = GSMenu } ! []
         

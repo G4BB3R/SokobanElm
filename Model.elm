@@ -25,12 +25,13 @@ type alias LevelInfo =
     }
 
 type alias Model =
-    { levels    : List LevelInfo
-    , current   : Level
-    , state     : GameState
-    , selected  : Int
-    , time      : Time
-    , timeStart : Time
+    { levels           : List LevelInfo
+    , current          : Level
+    , state            : GameState
+    , selected         : Int
+    , time             : Time
+    , timeStart        : Time
+    , player_animation : Bool
     }
 
 type alias Level =
@@ -51,6 +52,7 @@ init =
         1
         0.0
         0.0
+        False
 
 level_01 : Level
 level_01 =

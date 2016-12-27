@@ -16,10 +16,10 @@ blockToUrl : Block -> String
 blockToUrl block =
     case block of
         BFloor ->
-            "./img/2.gif"
+            "./img/ground.gif"
 
         BWall ->
-            "./img/1.gif"
+            "./img/wall.gif"
 
         BVoid ->
             ""
@@ -41,24 +41,28 @@ tile tile =
 
 hole : Pos -> Svg Msg
 hole pos =
-    render pos "./img/7.gif"
+    render pos "./img/hole.gif"
 
-player : Bool -> Pos -> Svg Msg
-player holed pos =
-    render pos (if holed then "./img/6.gif" else "./img/5.gif")
+player : Bool -> Bool -> Pos -> Svg Msg
+player frame holed pos =
+    let
+        crazy    = if holed then "crazy_" else ""
+        url_path = "./img/player_" ++ crazy ++ (if frame then "1"  else "2") ++ ".gif"
+    in
+        render pos url_path
 
 box : Bool -> Pos -> Svg Msg
 box correct pos =
-    render pos (if correct then "./img/4.gif" else "./img/3.gif")
+    render pos (if correct then "./img/box_hole.gif" else "./img/box.gif")
 
-drawLevel : Time -> Level -> Svg Msg
-drawLevel time_passed level =
+drawLevel : Bool -> Time -> Level -> Svg Msg
+drawLevel draw_animation time_passed level =
     svg [ width "500", height "500", viewBox "0 0 500 500" ]
      <| [ text_ [ x "24", y "15", fill "black" ] [ text "Sokoban" ] ]
      ++ (List.map tile level.tiles)
      ++ (List.map hole level.holes)
      ++ (List.map (\bpos -> box (List.any ((==) bpos) level.holes) bpos) level.boxes)
-     ++ [ player (List.any ((==) level.player) level.holes) level.player
+     ++ [ player draw_animation (List.any ((==) level.player) level.holes) level.player
         , text_ [ x "24", y "32", fill "black" ] [ text <| "Steps: " ++ toString level.steps ]
         , text_ [ x "104", y "32", fill "black" ]
                 [ time_passed
@@ -121,5 +125,5 @@ view model =
         ,   if model.state == GSMenu then
                 drawMenu model
             else
-                drawLevel (model.time - model.timeStart) model.current
+                drawLevel model.player_animation (model.time - model.timeStart) model.current
         ]

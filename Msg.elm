@@ -11,9 +11,4 @@ type Msg
     | Menu
     | RestartLevel
     | Tick Time
-    -- | LevelMsg LevelMsg
-
---type LevelMsg
---    = Walk Pos
---    | Restart
---    | LevelTick Time
+    | PlayerAnimation
