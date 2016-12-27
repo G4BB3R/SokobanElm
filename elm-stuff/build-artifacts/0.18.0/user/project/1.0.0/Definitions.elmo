@@ -1,0 +1,89 @@
+var _user$project$Definitions$iff = F3(
+	function (ifThen, ifElse, active) {
+		return active ? ifThen : ifElse;
+	});
+var _user$project$Definitions$mapWhere = F3(
+	function (filter, map, xs) {
+		return A2(
+			_elm_lang$core$List$map,
+			function (x) {
+				return filter(x) ? map(x) : x;
+			},
+			xs);
+	});
+var _user$project$Definitions$_p0 = {ctor: '_Tuple3', _0: 3, _1: 1, _2: 12};
+var _user$project$Definitions$iconW = _user$project$Definitions$_p0._0;
+var _user$project$Definitions$iconMin = _user$project$Definitions$_p0._1;
+var _user$project$Definitions$iconMax = _user$project$Definitions$_p0._2;
+var _user$project$Definitions$iconIdToPos = function (id) {
+	return {
+		ctor: '_Tuple2',
+		_0: A2(_elm_lang$core$Basics_ops['%'], id - 1, _user$project$Definitions$iconW) + 1,
+		_1: (((id - 1) / _user$project$Definitions$iconW) | 0) + 1
+	};
+};
+var _user$project$Definitions$iconPosToId = function (_p1) {
+	var _p2 = _p1;
+	var _p3 = _p2._1;
+	return (_p3 * _user$project$Definitions$iconW) + _p3;
+};
+var _user$project$Definitions$arrowToIconId = function (pos) {
+	var _p4 = pos;
+	_v1_4:
+	do {
+		if (_p4.ctor === '_Tuple2') {
+			switch (_p4._0) {
+				case -1:
+					if (_p4._1 === 0) {
+						return -1;
+					} else {
+						break _v1_4;
+					}
+				case 1:
+					if (_p4._1 === 0) {
+						return 1;
+					} else {
+						break _v1_4;
+					}
+				case 0:
+					switch (_p4._1) {
+						case -1:
+							return 0 - _user$project$Definitions$iconW;
+						case 1:
+							return _user$project$Definitions$iconW;
+						default:
+							break _v1_4;
+					}
+				default:
+					break _v1_4;
+			}
+		} else {
+			break _v1_4;
+		}
+	} while(false);
+	return 0;
+};
+var _user$project$Definitions$fixBetween = F2(
+	function (x, _p5) {
+		var _p6 = _p5;
+		var _p8 = _p6._0;
+		var _p7 = _p6._1;
+		return (_elm_lang$core$Native_Utils.cmp(x, _p8) < 0) ? (_p7 - A2(_elm_lang$core$Basics_ops['%'], (x - _p8) - 1, _user$project$Definitions$iconW)) : ((_elm_lang$core$Native_Utils.cmp(x, _p7) > 0) ? (_p8 + A2(_elm_lang$core$Basics_ops['%'], (x - _p7) - 1, _user$project$Definitions$iconW)) : x);
+	});
+var _user$project$Definitions$_p9 = {ctor: '_Tuple2', _0: 13, _1: 13};
+var _user$project$Definitions$mapW = _user$project$Definitions$_p9._0;
+var _user$project$Definitions$mapH = _user$project$Definitions$_p9._1;
+var _user$project$Definitions$getPosByIndex = function (i) {
+	return {
+		ctor: '_Tuple2',
+		_0: A2(_elm_lang$core$Basics_ops['%'], i - 1, _user$project$Definitions$mapW) + 1,
+		_1: (((i - 1) / _user$project$Definitions$mapH) | 0) + 1
+	};
+};
+var _user$project$Definitions$_p10 = {ctor: '_Tuple2', _0: 32, _1: 32};
+var _user$project$Definitions$tileW = _user$project$Definitions$_p10._0;
+var _user$project$Definitions$tileH = _user$project$Definitions$_p10._1;
+var _user$project$Definitions$getScreenPos = function (_p11) {
+	var _p12 = _p11;
+	return {ctor: '_Tuple2', _0: 24 + ((_p12._0 - 1) * _user$project$Definitions$tileW), _1: 38 + ((_p12._1 - 1) * _user$project$Definitions$tileH)};
+};

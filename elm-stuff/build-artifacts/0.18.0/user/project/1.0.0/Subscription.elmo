@@ -1,0 +1,41 @@
+var _user$project$Subscription$key_to_msg = function (n) {
+	var _p0 = n;
+	switch (_p0) {
+		case 32:
+			return _user$project$Msg$Enter;
+		case 13:
+			return _user$project$Msg$Enter;
+		default:
+			var _p1 = _elm_lang$core$Char$fromCode(n);
+			switch (_p1.valueOf()) {
+				case 'm':
+					return _user$project$Msg$Menu;
+				case 'r':
+					return _user$project$Msg$RestartLevel;
+				case 'w':
+					return _user$project$Msg$Arrows(
+						{ctor: '_Tuple2', _0: 0, _1: -1});
+				case 'a':
+					return _user$project$Msg$Arrows(
+						{ctor: '_Tuple2', _0: -1, _1: 0});
+				case 's':
+					return _user$project$Msg$Arrows(
+						{ctor: '_Tuple2', _0: 0, _1: 1});
+				case 'd':
+					return _user$project$Msg$Arrows(
+						{ctor: '_Tuple2', _0: 1, _1: 0});
+				default:
+					return _user$project$Msg$Nop;
+			}
+	}
+};
+var _user$project$Subscription$subscription = _elm_lang$core$Platform_Sub$batch(
+	{
+		ctor: '::',
+		_0: A2(_elm_lang$core$Time$every, 10 * _elm_lang$core$Time$millisecond, _user$project$Msg$Tick),
+		_1: {
+			ctor: '::',
+			_0: _elm_lang$keyboard$Keyboard$downs(_user$project$Subscription$key_to_msg),
+			_1: {ctor: '[]'}
+		}
+	});

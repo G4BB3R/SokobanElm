@@ -1,0 +1,494 @@
+var _user$project$View$drawLevelIcon = F2(
+	function (selected, levelInfo) {
+		var color = levelInfo.unlocked ? 'yellow' : 'gray';
+		var _p0 = _user$project$Definitions$iconIdToPos(levelInfo.id);
+		var x_ = _p0._0;
+		var y_ = _p0._1;
+		var _p1 = {ctor: '_Tuple2', _0: x_ * 70, _1: y_ * 70};
+		var sX = _p1._0;
+		var sY = _p1._1;
+		return A2(
+			_elm_lang$svg$Svg$svg,
+			{ctor: '[]'},
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$svg$Svg$rect,
+					{
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$x(
+							_elm_lang$core$Basics$toString(sX + levelInfo.failStep)),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$y(
+								_elm_lang$core$Basics$toString(sY)),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$width('48px'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$height('48px'),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$fill(color),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$stroke('black'),
+											_1: {ctor: '[]'}
+										}
+									}
+								}
+							}
+						}
+					},
+					{ctor: '[]'}),
+				_1: {
+					ctor: '::',
+					_0: A2(
+						_elm_lang$svg$Svg$text_,
+						{
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$x(
+								_elm_lang$core$Basics$toString(
+									(sX + 16) + ((_elm_lang$core$Native_Utils.cmp(levelInfo.id, 10) < 0) ? 4 : 0))),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$y(
+									_elm_lang$core$Basics$toString(sY + 28)),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$svg$Svg$text(
+								_elm_lang$core$Basics$toString(levelInfo.id)),
+							_1: {ctor: '[]'}
+						}),
+					_1: {
+						ctor: '::',
+						_0: A2(
+							_elm_lang$svg$Svg$text_,
+							{
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$x(
+									_elm_lang$core$Basics$toString(sX - 4)),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$y(
+										_elm_lang$core$Basics$toString(sY + 64)),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$fontSize('12'),
+											_1: {
+												ctor: '::',
+												_0: (levelInfo.unlocked && (_elm_lang$core$Native_Utils.cmp(levelInfo.bestStep, 0) > 0)) ? _elm_lang$svg$Svg_Attributes$visibility('show') : _elm_lang$svg$Svg_Attributes$visibility('hidden'),
+												_1: {ctor: '[]'}
+											}
+										}
+									}
+								}
+							},
+							{
+								ctor: '::',
+								_0: _elm_lang$svg$Svg$text(
+									A2(
+										_elm_lang$core$Basics_ops['++'],
+										'S ',
+										_elm_lang$core$Basics$toString(levelInfo.bestStep))),
+								_1: {ctor: '[]'}
+							}),
+						_1: {
+							ctor: '::',
+							_0: A2(
+								_elm_lang$svg$Svg$text_,
+								{
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$x(
+										_elm_lang$core$Basics$toString(sX + 24)),
+									_1: {
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$y(
+											_elm_lang$core$Basics$toString(sY + 64)),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$svg$Svg_Attributes$fontSize('12'),
+												_1: {
+													ctor: '::',
+													_0: (levelInfo.unlocked && (_elm_lang$core$Native_Utils.cmp(levelInfo.bestTime, 0) > 0)) ? _elm_lang$svg$Svg_Attributes$visibility('show') : _elm_lang$svg$Svg_Attributes$visibility('hidden'),
+													_1: {ctor: '[]'}
+												}
+											}
+										}
+									}
+								},
+								{
+									ctor: '::',
+									_0: _elm_lang$svg$Svg$text(
+										A2(
+											_elm_lang$core$Basics_ops['++'],
+											'T ',
+											_elm_lang$core$Basics$toString(levelInfo.bestTime))),
+									_1: {ctor: '[]'}
+								}),
+							_1: {
+								ctor: '::',
+								_0: A2(
+									_elm_lang$svg$Svg$rect,
+									{
+										ctor: '::',
+										_0: _elm_lang$svg$Svg_Attributes$x(
+											_elm_lang$core$Basics$toString(sX - 4)),
+										_1: {
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$y(
+												_elm_lang$core$Basics$toString(sY - 4)),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$svg$Svg_Attributes$width('56px'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$svg$Svg_Attributes$height('56px'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$svg$Svg_Attributes$stroke('blue'),
+														_1: {
+															ctor: '::',
+															_0: _elm_lang$svg$Svg_Attributes$fill('none'),
+															_1: {
+																ctor: '::',
+																_0: _elm_lang$svg$Svg_Attributes$visibility(
+																	selected ? 'show' : 'hidden'),
+																_1: {ctor: '[]'}
+															}
+														}
+													}
+												}
+											}
+										}
+									},
+									{ctor: '[]'}),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			});
+	});
+var _user$project$View$drawMenu = function (model) {
+	return A2(
+		_elm_lang$svg$Svg$svg,
+		{
+			ctor: '::',
+			_0: _elm_lang$svg$Svg_Attributes$width('500'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$height('500'),
+				_1: {ctor: '[]'}
+			}
+		},
+		A2(
+			_elm_lang$core$Basics_ops['++'],
+			{
+				ctor: '::',
+				_0: A2(
+					_elm_lang$svg$Svg$text_,
+					{
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$x('50'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$y('50'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+								_1: {ctor: '[]'}
+							}
+						}
+					},
+					{
+						ctor: '::',
+						_0: _elm_lang$svg$Svg$text('Choose a level'),
+						_1: {ctor: '[]'}
+					}),
+				_1: {ctor: '[]'}
+			},
+			A2(
+				_elm_lang$core$List$map,
+				function (level) {
+					return A2(
+						_user$project$View$drawLevelIcon,
+						_elm_lang$core$Native_Utils.eq(model.selected, level.id),
+						level);
+				},
+				model.levels)));
+};
+var _user$project$View$render = F2(
+	function (_p2, image_path) {
+		var _p3 = _p2;
+		var _p4 = _user$project$Definitions$getScreenPos(
+			{ctor: '_Tuple2', _0: _p3._0, _1: _p3._1});
+		var x__ = _p4._0;
+		var y__ = _p4._1;
+		return _elm_lang$core$Native_Utils.eq(image_path, '') ? A2(
+			_elm_lang$svg$Svg$svg,
+			{ctor: '[]'},
+			{ctor: '[]'}) : A2(
+			_elm_lang$svg$Svg$image,
+			{
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$xlinkHref(image_path),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$x(
+						_elm_lang$core$Basics$toString(x__)),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$y(
+							_elm_lang$core$Basics$toString(y__)),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$width('32px'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$height('32px'),
+								_1: {ctor: '[]'}
+							}
+						}
+					}
+				}
+			},
+			{ctor: '[]'});
+	});
+var _user$project$View$tile = function (tile) {
+	return A2(
+		_user$project$View$render,
+		tile.pos,
+		_user$project$Types$blockToUrl(tile.block));
+};
+var _user$project$View$hole = function (pos) {
+	return A2(_user$project$View$render, pos, '/img/7.gif');
+};
+var _user$project$View$player = F2(
+	function (holed, pos) {
+		return A2(
+			_user$project$View$render,
+			pos,
+			holed ? '/img/6.gif' : '/img/5.gif');
+	});
+var _user$project$View$box = F2(
+	function (correct, pos) {
+		return A2(
+			_user$project$View$render,
+			pos,
+			correct ? '/img/4.gif' : '/img/3.gif');
+	});
+var _user$project$View$drawLevel = F2(
+	function (time_passed, level) {
+		return A2(
+			_elm_lang$svg$Svg$svg,
+			{
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$width('500'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$height('500'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$viewBox('0 0 500 500'),
+						_1: {ctor: '[]'}
+					}
+				}
+			},
+			A2(
+				_elm_lang$core$Basics_ops['++'],
+				{
+					ctor: '::',
+					_0: A2(
+						_elm_lang$svg$Svg$text_,
+						{
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$x('24'),
+							_1: {
+								ctor: '::',
+								_0: _elm_lang$svg$Svg_Attributes$y('15'),
+								_1: {
+									ctor: '::',
+									_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+									_1: {ctor: '[]'}
+								}
+							}
+						},
+						{
+							ctor: '::',
+							_0: _elm_lang$svg$Svg$text('Sokoban'),
+							_1: {ctor: '[]'}
+						}),
+					_1: {ctor: '[]'}
+				},
+				A2(
+					_elm_lang$core$Basics_ops['++'],
+					A2(_elm_lang$core$List$map, _user$project$View$tile, level.tiles),
+					A2(
+						_elm_lang$core$Basics_ops['++'],
+						A2(_elm_lang$core$List$map, _user$project$View$hole, level.holes),
+						A2(
+							_elm_lang$core$Basics_ops['++'],
+							A2(
+								_elm_lang$core$List$map,
+								function (bpos) {
+									return A2(
+										_user$project$View$box,
+										A2(
+											_elm_lang$core$List$any,
+											F2(
+												function (x, y) {
+													return _elm_lang$core$Native_Utils.eq(x, y);
+												})(bpos),
+											level.holes),
+										bpos);
+								},
+								level.boxes),
+							{
+								ctor: '::',
+								_0: A2(
+									_user$project$View$player,
+									A2(
+										_elm_lang$core$List$any,
+										F2(
+											function (x, y) {
+												return _elm_lang$core$Native_Utils.eq(x, y);
+											})(level.player),
+										level.holes),
+									level.player),
+								_1: {
+									ctor: '::',
+									_0: A2(
+										_elm_lang$svg$Svg$text_,
+										{
+											ctor: '::',
+											_0: _elm_lang$svg$Svg_Attributes$x('24'),
+											_1: {
+												ctor: '::',
+												_0: _elm_lang$svg$Svg_Attributes$y('32'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+													_1: {ctor: '[]'}
+												}
+											}
+										},
+										{
+											ctor: '::',
+											_0: _elm_lang$svg$Svg$text(
+												A2(
+													_elm_lang$core$Basics_ops['++'],
+													'Steps: ',
+													_elm_lang$core$Basics$toString(level.steps))),
+											_1: {ctor: '[]'}
+										}),
+									_1: {
+										ctor: '::',
+										_0: A2(
+											_elm_lang$svg$Svg$text_,
+											{
+												ctor: '::',
+												_0: _elm_lang$svg$Svg_Attributes$x('104'),
+												_1: {
+													ctor: '::',
+													_0: _elm_lang$svg$Svg_Attributes$y('32'),
+													_1: {
+														ctor: '::',
+														_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+														_1: {ctor: '[]'}
+													}
+												}
+											},
+											{
+												ctor: '::',
+												_0: _elm_lang$svg$Svg$text(
+													A2(
+														F2(
+															function (x, y) {
+																return A2(_elm_lang$core$Basics_ops['++'], x, y);
+															}),
+														'Time: ',
+														_elm_lang$core$Basics$toString(
+															A3(
+																_elm_lang$core$Basics$flip,
+																F2(
+																	function (x, y) {
+																		return x / y;
+																	}),
+																100,
+																_elm_lang$core$Basics$toFloat(
+																	_elm_lang$core$Basics$round(
+																		A3(
+																			_elm_lang$core$Basics$flip,
+																			F2(
+																				function (x, y) {
+																					return x / y;
+																				}),
+																			10,
+																			time_passed))))))),
+												_1: {ctor: '[]'}
+											}),
+										_1: {ctor: '[]'}
+									}
+								}
+							})))));
+	});
+var _user$project$View$view = function (model) {
+	return A2(
+		_elm_lang$svg$Svg$svg,
+		{
+			ctor: '::',
+			_0: _elm_lang$svg$Svg_Attributes$width('500'),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$svg$Svg_Attributes$height('500'),
+				_1: {
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$fill('blue'),
+					_1: {ctor: '[]'}
+				}
+			}
+		},
+		{
+			ctor: '::',
+			_0: A2(
+				_elm_lang$svg$Svg$text_,
+				{
+					ctor: '::',
+					_0: _elm_lang$svg$Svg_Attributes$x('24'),
+					_1: {
+						ctor: '::',
+						_0: _elm_lang$svg$Svg_Attributes$y('15'),
+						_1: {
+							ctor: '::',
+							_0: _elm_lang$svg$Svg_Attributes$fill('black'),
+							_1: {ctor: '[]'}
+						}
+					}
+				},
+				{
+					ctor: '::',
+					_0: _elm_lang$svg$Svg$text('Sokoban - WASD to walk, R to restart and M to go back to menu'),
+					_1: {ctor: '[]'}
+				}),
+			_1: {
+				ctor: '::',
+				_0: _elm_lang$core$Native_Utils.eq(model.state, _user$project$Model$GSMenu) ? _user$project$View$drawMenu(model) : A2(_user$project$View$drawLevel, model.time - model.timeStart, model.current),
+				_1: {ctor: '[]'}
+			}
+		});
+};

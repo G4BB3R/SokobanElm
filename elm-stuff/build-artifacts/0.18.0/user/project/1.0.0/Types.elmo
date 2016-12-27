@@ -1,0 +1,14 @@
+var _user$project$Types$blockToUrl = function (block) {
+	var _p0 = block;
+	switch (_p0.ctor) {
+		case 'BFloor':
+			return '/img/2.gif';
+		case 'BWall':
+			return '/img/1.gif';
+		default:
+			return '';
+	}
+};
+var _user$project$Types$BVoid = {ctor: 'BVoid'};
+var _user$project$Types$BWall = {ctor: 'BWall'};
+var _user$project$Types$BFloor = {ctor: 'BFloor'};

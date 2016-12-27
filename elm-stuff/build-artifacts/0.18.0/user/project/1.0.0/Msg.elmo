@@ -1,0 +1,10 @@
+var _user$project$Msg$Tick = function (a) {
+	return {ctor: 'Tick', _0: a};
+};
+var _user$project$Msg$RestartLevel = {ctor: 'RestartLevel'};
+var _user$project$Msg$Menu = {ctor: 'Menu'};
+var _user$project$Msg$Enter = {ctor: 'Enter'};
+var _user$project$Msg$Arrows = function (a) {
+	return {ctor: 'Arrows', _0: a};
+};
+var _user$project$Msg$Nop = {ctor: 'Nop'};
