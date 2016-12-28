@@ -4,7 +4,7 @@ import Types exposing (..)
 
 (tileW, tileH) = (32, 32)
 (mapW, mapH)   = (13, 13)
-(iconW, iconMin, iconMax)  = (3, 1, 12)
+iconW  = 3
 
 getScreenPos : (Int, Int) -> (Int, Int)
 getScreenPos (x, y) =
@@ -35,7 +35,7 @@ arrowToIconId pos =
 fixBetween : Int -> (Int, Int) -> Int
 fixBetween x (min, max) =
     if x < min then
-        max - (x - min - 1) % iconW
+        max - (x - min - 1) % iconW + 1
     else if x > max then
         min + (x - max - 1) % iconW
     else

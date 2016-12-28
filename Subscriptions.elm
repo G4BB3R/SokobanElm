@@ -42,7 +42,7 @@ key_to_msg n =
 subscriptions : Model -> Sub Msg
 subscriptions model =
     Sub.batch
-        [ Time.every Time.millisecond Msg.Tick
-        , Time.every (Time.second/2)      (\_ -> Msg.PlayerAnimation)
+        [ Time.every (Time.millisecond * 10) Msg.Tick
+        , Time.every (Time.second      /  2) (\_ -> Msg.PlayerAnimation)
         , Keyboard.downs key_to_msg
         ]

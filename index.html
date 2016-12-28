@@ -8910,10 +8910,7 @@ var _user$project$Definitions$mapWhere = F3(
 			},
 			xs);
 	});
-var _user$project$Definitions$_p0 = {ctor: '_Tuple3', _0: 3, _1: 1, _2: 12};
-var _user$project$Definitions$iconW = _user$project$Definitions$_p0._0;
-var _user$project$Definitions$iconMin = _user$project$Definitions$_p0._1;
-var _user$project$Definitions$iconMax = _user$project$Definitions$_p0._2;
+var _user$project$Definitions$iconW = 3;
 var _user$project$Definitions$iconIdToPos = function (id) {
 	return {
 		ctor: '_Tuple2',
@@ -8921,31 +8918,31 @@ var _user$project$Definitions$iconIdToPos = function (id) {
 		_1: (((id - 1) / _user$project$Definitions$iconW) | 0) + 1
 	};
 };
-var _user$project$Definitions$iconPosToId = function (_p1) {
-	var _p2 = _p1;
-	var _p3 = _p2._1;
-	return (_p3 * _user$project$Definitions$iconW) + _p3;
+var _user$project$Definitions$iconPosToId = function (_p0) {
+	var _p1 = _p0;
+	var _p2 = _p1._1;
+	return (_p2 * _user$project$Definitions$iconW) + _p2;
 };
 var _user$project$Definitions$arrowToIconId = function (pos) {
-	var _p4 = pos;
+	var _p3 = pos;
 	_v1_4:
 	do {
-		if (_p4.ctor === '_Tuple2') {
-			switch (_p4._0) {
+		if (_p3.ctor === '_Tuple2') {
+			switch (_p3._0) {
 				case -1:
-					if (_p4._1 === 0) {
+					if (_p3._1 === 0) {
 						return -1;
 					} else {
 						break _v1_4;
 					}
 				case 1:
-					if (_p4._1 === 0) {
+					if (_p3._1 === 0) {
 						return 1;
 					} else {
 						break _v1_4;
 					}
 				case 0:
-					switch (_p4._1) {
+					switch (_p3._1) {
 						case -1:
 							return 0 - _user$project$Definitions$iconW;
 						case 1:
@@ -8963,15 +8960,15 @@ var _user$project$Definitions$arrowToIconId = function (pos) {
 	return 0;
 };
 var _user$project$Definitions$fixBetween = F2(
-	function (x, _p5) {
-		var _p6 = _p5;
-		var _p8 = _p6._0;
-		var _p7 = _p6._1;
-		return (_elm_lang$core$Native_Utils.cmp(x, _p8) < 0) ? (_p7 - A2(_elm_lang$core$Basics_ops['%'], (x - _p8) - 1, _user$project$Definitions$iconW)) : ((_elm_lang$core$Native_Utils.cmp(x, _p7) > 0) ? (_p8 + A2(_elm_lang$core$Basics_ops['%'], (x - _p7) - 1, _user$project$Definitions$iconW)) : x);
+	function (x, _p4) {
+		var _p5 = _p4;
+		var _p7 = _p5._0;
+		var _p6 = _p5._1;
+		return (_elm_lang$core$Native_Utils.cmp(x, _p7) < 0) ? ((_p6 - A2(_elm_lang$core$Basics_ops['%'], (x - _p7) - 1, _user$project$Definitions$iconW)) + 1) : ((_elm_lang$core$Native_Utils.cmp(x, _p6) > 0) ? (_p7 + A2(_elm_lang$core$Basics_ops['%'], (x - _p6) - 1, _user$project$Definitions$iconW)) : x);
 	});
-var _user$project$Definitions$_p9 = {ctor: '_Tuple2', _0: 13, _1: 13};
-var _user$project$Definitions$mapW = _user$project$Definitions$_p9._0;
-var _user$project$Definitions$mapH = _user$project$Definitions$_p9._1;
+var _user$project$Definitions$_p8 = {ctor: '_Tuple2', _0: 13, _1: 13};
+var _user$project$Definitions$mapW = _user$project$Definitions$_p8._0;
+var _user$project$Definitions$mapH = _user$project$Definitions$_p8._1;
 var _user$project$Definitions$getPosByIndex = function (i) {
 	return {
 		ctor: '_Tuple2',
@@ -8979,12 +8976,12 @@ var _user$project$Definitions$getPosByIndex = function (i) {
 		_1: (((i - 1) / _user$project$Definitions$mapH) | 0) + 1
 	};
 };
-var _user$project$Definitions$_p10 = {ctor: '_Tuple2', _0: 32, _1: 32};
-var _user$project$Definitions$tileW = _user$project$Definitions$_p10._0;
-var _user$project$Definitions$tileH = _user$project$Definitions$_p10._1;
-var _user$project$Definitions$getScreenPos = function (_p11) {
-	var _p12 = _p11;
-	return {ctor: '_Tuple2', _0: 24 + ((_p12._0 - 1) * _user$project$Definitions$tileW), _1: 38 + ((_p12._1 - 1) * _user$project$Definitions$tileH)};
+var _user$project$Definitions$_p9 = {ctor: '_Tuple2', _0: 32, _1: 32};
+var _user$project$Definitions$tileW = _user$project$Definitions$_p9._0;
+var _user$project$Definitions$tileH = _user$project$Definitions$_p9._1;
+var _user$project$Definitions$getScreenPos = function (_p10) {
+	var _p11 = _p10;
+	return {ctor: '_Tuple2', _0: 24 + ((_p11._0 - 1) * _user$project$Definitions$tileW), _1: 38 + ((_p11._1 - 1) * _user$project$Definitions$tileH)};
 };
 var _user$project$Levels$level_error_str = A2(
 	_elm_lang$core$Basics_ops['++'],
@@ -9323,17 +9320,17 @@ var _user$project$Model$Tile = F2(
 	function (a, b) {
 		return {pos: a, block: b};
 	});
-var _user$project$Model$LevelInfo = F6(
-	function (a, b, c, d, e, f) {
-		return {id: a, level: b, unlocked: c, bestStep: d, bestTime: e, failStep: f};
+var _user$project$Model$LevelInfo = F7(
+	function (a, b, c, d, e, f, g) {
+		return {id: a, level: b, unlocked: c, beat: d, bestStep: e, bestTime: f, failStep: g};
 	});
 var _user$project$Model$Model = F7(
 	function (a, b, c, d, e, f, g) {
 		return {levels: a, current: b, state: c, selected: d, time: e, timeStart: f, player_animation: g};
 	});
-var _user$project$Model$Level = F6(
-	function (a, b, c, d, e, f) {
-		return {tiles: a, holes: b, boxes: c, player: d, won: e, steps: f};
+var _user$project$Model$Level = F5(
+	function (a, b, c, d, e) {
+		return {tiles: a, holes: b, boxes: c, player: d, steps: e};
 	});
 var _user$project$Model$strToLevel = function (str) {
 	var xs = A2(
@@ -9415,7 +9412,7 @@ var _user$project$Model$strToLevel = function (str) {
 							_elm_lang$core$Native_Utils.chr('p'));
 					},
 					xs))));
-	return A6(_user$project$Model$Level, tiles, holes, boxes, player, false, 0);
+	return A5(_user$project$Model$Level, tiles, holes, boxes, player, 0);
 };
 var _user$project$Model$level_01 = _user$project$Model$strToLevel(_user$project$Levels$level_01_str);
 var _user$project$Model$level_error = _user$project$Model$strToLevel(_user$project$Levels$level_error_str);
@@ -9423,13 +9420,14 @@ var _user$project$Model$levels = A2(
 	_elm_lang$core$List$indexedMap,
 	F2(
 		function (i, level_str) {
-			return A6(
+			return A7(
 				_user$project$Model$LevelInfo,
 				i + 1,
 				_user$project$Model$strToLevel(level_str),
 				_elm_lang$core$Native_Utils.eq(i, 0),
-				0,
-				0,
+				false,
+				999999,
+				999999.0,
 				0);
 		}),
 	_user$project$Levels$level_list_str);
@@ -9483,16 +9481,13 @@ var _user$project$Update$updateLevels = function (model) {
 				return _elm_lang$core$Native_Utils.update(
 					lvl,
 					{
-						bestStep: function () {
-							var best_step = _elm_lang$core$Native_Utils.eq(lvl.bestStep, 0) ? 999999 : lvl.bestStep;
-							return A2(_elm_lang$core$Basics$min, best_step, model.current.steps);
-						}(),
-						bestTime: function () {
-							var best_time = _elm_lang$core$Native_Utils.eq(lvl.bestTime, 0.0) ? 999999.0 : lvl.bestTime;
-							return A2(
-								_elm_lang$core$Basics$min,
-								best_time,
-								A3(
+						beat: true,
+						bestStep: A2(_elm_lang$core$Basics$min, lvl.bestStep, model.current.steps + 1),
+						bestTime: A2(
+							_elm_lang$core$Basics$min,
+							lvl.bestTime,
+							function (_p2) {
+								return A3(
 									_elm_lang$core$Basics$flip,
 									F2(
 										function (x, y) {
@@ -9508,177 +9503,140 @@ var _user$project$Update$updateLevels = function (model) {
 														return x / y;
 													}),
 												100,
-												model.time - model.timeStart)))));
-						}()
+												_p2))));
+							}(model.time - model.timeStart))
 					});
 			},
 			model.levels));
 };
-var _user$project$Update$canMoveBoxes = F4(
-	function (player_pos, _p2, boxes, tiles) {
-		var _p3 = _p2;
-		var boxes_ = A3(
-			_elm_lang$core$Basics$flip,
-			_elm_lang$core$List$map,
-			boxes,
-			function (_p4) {
-				var _p5 = _p4;
-				var _p7 = _p5._1;
-				var _p6 = _p5._0;
-				return _elm_lang$core$Native_Utils.eq(
-					{ctor: '_Tuple2', _0: _p6, _1: _p7},
-					player_pos) ? {ctor: '_Tuple2', _0: _p6 + _p3._0, _1: _p7 + _p3._1} : {ctor: '_Tuple2', _0: _p6, _1: _p7};
-			});
-		var zip_boxes_ = A2(
-			_elm_lang$core$List$map,
-			function (_p8) {
-				var _p9 = _p8;
-				return {ctor: '_Tuple2', _0: _p9._0 + 1, _1: _p9._1};
-			},
-			A2(
-				_elm_lang$core$List$indexedMap,
+var _user$project$Update$moveBoxes = F4(
+	function (player_pos, _p3, boxes, tiles) {
+		var _p4 = _p3;
+		var boxes_ = A2(
+			_elm_lang$core$List$indexedMap,
+			F2(
+				function (i, n) {
+					return {ctor: '_Tuple2', _0: i + 1, _1: n};
+				}),
+			A3(
+				_user$project$Definitions$mapWhere,
 				F2(
-					function (v0, v1) {
-						return {ctor: '_Tuple2', _0: v0, _1: v1};
-					}),
-				boxes_));
-		var colided_with_box = A3(
-			_elm_lang$core$Basics$flip,
-			_elm_lang$core$List$any,
-			zip_boxes_,
-			function (_p10) {
-				var _p11 = _p10;
-				return A3(
-					_elm_lang$core$Basics$flip,
-					_elm_lang$core$List$any,
-					zip_boxes_,
-					function (_p12) {
-						var _p13 = _p12;
-						return (!_elm_lang$core$Native_Utils.eq(_p11._0, _p13._0)) && _elm_lang$core$Native_Utils.eq(_p11._1, _p13._1);
-					});
-			});
-		var colided_with_wall = A3(
+					function (x, y) {
+						return _elm_lang$core$Native_Utils.eq(x, y);
+					})(player_pos),
+				function (_p5) {
+					var _p6 = _p5;
+					return {ctor: '_Tuple2', _0: _p6._0 + _p4._0, _1: _p6._1 + _p4._1};
+				},
+				boxes));
+		var collided_with_box = A3(
 			_elm_lang$core$Basics$flip,
 			_elm_lang$core$List$any,
 			boxes_,
-			function (bpos) {
+			function (_p7) {
+				var _p8 = _p7;
+				return A3(
+					_elm_lang$core$Basics$flip,
+					_elm_lang$core$List$any,
+					boxes_,
+					function (_p9) {
+						var _p10 = _p9;
+						return (!_elm_lang$core$Native_Utils.eq(_p8._0, _p10._0)) && _elm_lang$core$Native_Utils.eq(_p8._1, _p10._1);
+					});
+			});
+		var collided_with_wall = A3(
+			_elm_lang$core$Basics$flip,
+			_elm_lang$core$List$any,
+			boxes_,
+			function (_p11) {
+				var _p12 = _p11;
 				return A3(
 					_elm_lang$core$Basics$flip,
 					_elm_lang$core$List$any,
 					tiles,
 					function (t) {
-						return _elm_lang$core$Native_Utils.eq(t.pos, bpos) && _elm_lang$core$Native_Utils.eq(t.block, _user$project$Types$BWall);
+						return _elm_lang$core$Native_Utils.eq(t.pos, _p12._1) && _elm_lang$core$Native_Utils.eq(t.block, _user$project$Types$BWall);
 					});
 			});
-		return (colided_with_box || colided_with_wall) ? _elm_lang$core$Maybe$Nothing : _elm_lang$core$Maybe$Just(boxes_);
-	});
-var _user$project$Update$isWalkable = F2(
-	function (pos, level) {
-		var tile = _elm_lang$core$List$head(
-			A2(
-				_elm_lang$core$List$filter,
-				function (_p14) {
-					return A2(
-						F2(
-							function (x, y) {
-								return _elm_lang$core$Native_Utils.eq(x, y);
-							}),
-						pos,
-						function (_) {
-							return _.pos;
-						}(_p14));
-				},
-				level.tiles));
-		return A2(
+		var cannot_walk = A2(
 			_elm_lang$core$Maybe$withDefault,
-			false,
+			true,
 			A2(
 				_elm_lang$core$Maybe$map,
-				function (_p15) {
+				function (_p13) {
 					return A2(
 						F2(
 							function (x, y) {
-								return _elm_lang$core$Native_Utils.eq(x, y);
+								return !_elm_lang$core$Native_Utils.eq(x, y);
 							}),
 						_user$project$Types$BFloor,
 						function (_) {
 							return _.block;
-						}(_p15));
+						}(_p13));
 				},
-				tile));
+				_elm_lang$core$List$head(
+					A2(
+						_elm_lang$core$List$filter,
+						function (_p14) {
+							return A2(
+								F2(
+									function (x, y) {
+										return _elm_lang$core$Native_Utils.eq(x, y);
+									}),
+								player_pos,
+								function (_) {
+									return _.pos;
+								}(_p14));
+						},
+						tiles))));
+		return (cannot_walk || (collided_with_box || collided_with_wall)) ? _elm_lang$core$Maybe$Nothing : _elm_lang$core$Maybe$Just(
+			A2(_elm_lang$core$List$map, _elm_lang$core$Tuple$second, boxes_));
 	});
-var _user$project$Update$updateWalk = F2(
-	function (_p16, model) {
-		var _p17 = _p16;
-		var _p19 = _p17._1;
-		var _p18 = _p17._0;
-		var current = function () {
-			if (model.current.won) {
-				return model.current;
-			} else {
-				var pos = A2(
-					_elm_lang$core$Tuple$mapSecond,
+var _user$project$Update$Fail = {ctor: 'Fail'};
+var _user$project$Update$Walked = F2(
+	function (a, b) {
+		return {ctor: 'Walked', _0: a, _1: b};
+	});
+var _user$project$Update$Won = {ctor: 'Won'};
+var _user$project$Update$walk = F2(
+	function (_p15, level) {
+		var _p16 = _p15;
+		var _p20 = _p16._1;
+		var _p19 = _p16._0;
+		var pos = function (_p17) {
+			var _p18 = _p17;
+			return {ctor: '_Tuple2', _0: _p19 + _p18._0, _1: _p20 + _p18._1};
+		}(level.player);
+		var boxes_ = A4(
+			_user$project$Update$moveBoxes,
+			pos,
+			{ctor: '_Tuple2', _0: _p19, _1: _p20},
+			level.boxes,
+			level.tiles);
+		var won = A2(
+			_elm_lang$core$List$all,
+			function (box) {
+				return A2(
+					_elm_lang$core$List$any,
 					F2(
 						function (x, y) {
-							return x + y;
-						})(_p19),
-					A2(
-						_elm_lang$core$Tuple$mapFirst,
-						F2(
-							function (x, y) {
-								return x + y;
-							})(_p18),
-						model.current.player));
-				var boxes_ = A4(
-					_user$project$Update$canMoveBoxes,
-					pos,
-					{ctor: '_Tuple2', _0: _p18, _1: _p19},
-					model.current.boxes,
-					model.current.tiles);
-				var success = _elm_lang$core$Native_Utils.eq(
-					_elm_lang$core$Basics$abs(_p18) + _elm_lang$core$Basics$abs(_p19),
-					1) && (A2(_user$project$Update$isWalkable, pos, model.current) && (!_elm_lang$core$Native_Utils.eq(boxes_, _elm_lang$core$Maybe$Nothing)));
-				var won = success && A3(
-					_elm_lang$core$Basics$flip,
-					_elm_lang$core$List$all,
-					A2(_elm_lang$core$Maybe$withDefault, model.current.boxes, boxes_),
-					function (bpos) {
-						return A2(
-							_elm_lang$core$List$any,
-							F2(
-								function (x, y) {
-									return _elm_lang$core$Native_Utils.eq(x, y);
-								})(bpos),
-							model.current.holes);
-					});
-				if (!success) {
-					return model.current;
-				} else {
-					var current = model.current;
-					return _elm_lang$core$Native_Utils.update(
-						current,
-						{
-							player: pos,
-							boxes: A2(_elm_lang$core$Maybe$withDefault, model.current.boxes, boxes_),
-							won: won,
-							steps: model.current.steps + 1
-						});
-				}
-			}
-		}();
-		return (!current.won) ? _elm_lang$core$Native_Utils.update(
-			model,
-			{current: current}) : _elm_lang$core$Native_Utils.update(
-			model,
-			{
-				levels: _user$project$Update$updateLevels(model),
-				state: _user$project$Model$GSMenu
-			});
+							return _elm_lang$core$Native_Utils.eq(x, y);
+						})(box),
+					level.holes);
+			},
+			A2(_elm_lang$core$Maybe$withDefault, level.boxes, boxes_));
+		return won ? _user$project$Update$Won : A2(
+			_elm_lang$core$Maybe$withDefault,
+			_user$project$Update$Fail,
+			A2(
+				_elm_lang$core$Maybe$map,
+				_user$project$Update$Walked(pos),
+				boxes_));
 	});
 var _user$project$Update$update = F2(
 	function (msg, model) {
-		var _p20 = msg;
-		switch (_p20.ctor) {
+		var _p21 = msg;
+		switch (_p21.ctor) {
 			case 'Nop':
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
@@ -9699,22 +9657,34 @@ var _user$project$Update$update = F2(
 						{state: _user$project$Model$GSMenu}),
 					{ctor: '[]'});
 			case 'Tick':
-				var levels = A3(
-					_elm_lang$core$Basics$flip,
-					_elm_lang$core$List$map,
-					model.levels,
-					function (lvl) {
-						return _elm_lang$core$Native_Utils.update(
-							lvl,
-							{
-								failStep: _elm_lang$core$Native_Utils.eq(lvl.failStep, 0) ? lvl.failStep : ((lvl.failStep * -1) + ((_elm_lang$core$Native_Utils.cmp(lvl.failStep, 0) > 0) ? 1 : -1))
-							});
-					});
 				return A2(
 					_elm_lang$core$Platform_Cmd_ops['!'],
 					_elm_lang$core$Native_Utils.update(
 						model,
-						{levels: levels, time: _p20._0}),
+						{
+							time: _p21._0,
+							levels: A3(
+								_user$project$Definitions$mapWhere,
+								function (_p22) {
+									return A2(
+										F2(
+											function (x, y) {
+												return !_elm_lang$core$Native_Utils.eq(x, y);
+											}),
+										0,
+										function (_) {
+											return _.failStep;
+										}(_p22));
+								},
+								function (lvl) {
+									return _elm_lang$core$Native_Utils.update(
+										lvl,
+										{
+											failStep: (0 - lvl.failStep) + A3(_elm_lang$core$Basics$clamp, -1, 1, lvl.failStep)
+										});
+								},
+								model.levels)
+						}),
 					{ctor: '[]'});
 			case 'Enter':
 				if (!_elm_lang$core$Native_Utils.eq(model.state, _user$project$Model$GSMenu)) {
@@ -9725,19 +9695,19 @@ var _user$project$Update$update = F2(
 				} else {
 					var m_levelInfo = _elm_lang$core$List$head(
 						A2(_elm_lang$core$List$drop, model.selected - 1, model.levels));
-					var _p21 = m_levelInfo;
-					if (_p21.ctor === 'Nothing') {
+					var _p23 = m_levelInfo;
+					if (_p23.ctor === 'Nothing') {
 						return A2(
 							_elm_lang$core$Platform_Cmd_ops['!'],
 							model,
 							{ctor: '[]'});
 					} else {
-						var _p22 = _p21._0;
-						return _p22.unlocked ? A2(
+						var _p24 = _p23._0;
+						return _p24.unlocked ? A2(
 							_elm_lang$core$Platform_Cmd_ops['!'],
 							_elm_lang$core$Native_Utils.update(
 								model,
-								{state: _user$project$Model$GSPlaying, timeStart: model.time, current: _p22.level}),
+								{state: _user$project$Model$GSPlaying, timeStart: model.time, current: _p24.level}),
 							{ctor: '[]'}) : A2(
 							_elm_lang$core$Platform_Cmd_ops['!'],
 							_elm_lang$core$Native_Utils.update(
@@ -9759,30 +9729,57 @@ var _user$project$Update$update = F2(
 					}
 				}
 			case 'Arrows':
-				var _p24 = _p20._0._1;
-				var _p23 = _p20._0._0;
-				return _elm_lang$core$Native_Utils.eq(model.state, _user$project$Model$GSMenu) ? A2(
-					_elm_lang$core$Platform_Cmd_ops['!'],
-					_elm_lang$core$Native_Utils.update(
-						model,
-						{
-							selected: A2(
-								_user$project$Definitions$fixBetween,
-								model.selected + _user$project$Definitions$arrowToIconId(
-									{ctor: '_Tuple2', _0: _p23, _1: _p24}),
-								{
-									ctor: '_Tuple2',
-									_0: _user$project$Definitions$iconMin,
-									_1: _elm_lang$core$List$length(model.levels)
-								})
-						}),
-					{ctor: '[]'}) : A2(
-					_elm_lang$core$Platform_Cmd_ops['!'],
-					A2(
-						_user$project$Update$updateWalk,
-						{ctor: '_Tuple2', _0: _p23, _1: _p24},
-						model),
-					{ctor: '[]'});
+				var _p26 = _p21._0;
+				if (_elm_lang$core$Native_Utils.eq(model.state, _user$project$Model$GSMenu)) {
+					return A2(
+						_elm_lang$core$Platform_Cmd_ops['!'],
+						_elm_lang$core$Native_Utils.update(
+							model,
+							{
+								selected: A2(
+									_user$project$Definitions$fixBetween,
+									model.selected + _user$project$Definitions$arrowToIconId(_p26),
+									{
+										ctor: '_Tuple2',
+										_0: 1,
+										_1: _elm_lang$core$List$length(model.levels)
+									})
+							}),
+						{ctor: '[]'});
+				} else {
+					var _p25 = A2(_user$project$Update$walk, _p26, model.current);
+					switch (_p25.ctor) {
+						case 'Won':
+							return A2(
+								_elm_lang$core$Platform_Cmd_ops['!'],
+								_elm_lang$core$Native_Utils.update(
+									model,
+									{
+										state: _user$project$Model$GSMenu,
+										levels: _user$project$Update$updateLevels(model)
+									}),
+								{ctor: '[]'});
+						case 'Walked':
+							return A2(
+								_elm_lang$core$Platform_Cmd_ops['!'],
+								_elm_lang$core$Native_Utils.update(
+									model,
+									{
+										current: function () {
+											var current = model.current;
+											return _elm_lang$core$Native_Utils.update(
+												current,
+												{player: _p25._0, boxes: _p25._1, steps: model.current.steps + 1});
+										}()
+									}),
+								{ctor: '[]'});
+						default:
+							return A2(
+								_elm_lang$core$Platform_Cmd_ops['!'],
+								model,
+								{ctor: '[]'});
+					}
+				}
 			default:
 				var current = A2(
 					_elm_lang$core$Maybe$withDefault,
@@ -9795,7 +9792,7 @@ var _user$project$Update$update = F2(
 						_elm_lang$core$List$head(
 							A2(
 								_elm_lang$core$List$filter,
-								function (_p25) {
+								function (_p27) {
 									return A2(
 										F2(
 											function (x, y) {
@@ -9804,7 +9801,7 @@ var _user$project$Update$update = F2(
 										model.selected,
 										function (_) {
 											return _.id;
-										}(_p25));
+										}(_p27));
 								},
 								model.levels))));
 				return A2(
@@ -9905,7 +9902,7 @@ var _user$project$View$drawLevelIcon = F2(
 											_0: _elm_lang$svg$Svg_Attributes$fontSize('12'),
 											_1: {
 												ctor: '::',
-												_0: (levelInfo.unlocked && (_elm_lang$core$Native_Utils.cmp(levelInfo.bestStep, 0) > 0)) ? _elm_lang$svg$Svg_Attributes$visibility('show') : _elm_lang$svg$Svg_Attributes$visibility('hidden'),
+												_0: (levelInfo.beat && (_elm_lang$core$Native_Utils.cmp(levelInfo.bestStep, 0) > 0)) ? _elm_lang$svg$Svg_Attributes$visibility('show') : _elm_lang$svg$Svg_Attributes$visibility('hidden'),
 												_1: {ctor: '[]'}
 											}
 										}
@@ -9941,7 +9938,7 @@ var _user$project$View$drawLevelIcon = F2(
 												_0: _elm_lang$svg$Svg_Attributes$fontSize('12'),
 												_1: {
 													ctor: '::',
-													_0: (levelInfo.unlocked && (_elm_lang$core$Native_Utils.cmp(levelInfo.bestTime, 0) > 0)) ? _elm_lang$svg$Svg_Attributes$visibility('show') : _elm_lang$svg$Svg_Attributes$visibility('hidden'),
+													_0: (levelInfo.beat && (_elm_lang$core$Native_Utils.cmp(levelInfo.bestTime, 0) > 0)) ? _elm_lang$svg$Svg_Attributes$visibility('show') : _elm_lang$svg$Svg_Attributes$visibility('hidden'),
 													_1: {ctor: '[]'}
 												}
 											}
@@ -10364,7 +10361,7 @@ var _user$project$Subscriptions$subscriptions = function (model) {
 	return _elm_lang$core$Platform_Sub$batch(
 		{
 			ctor: '::',
-			_0: A2(_elm_lang$core$Time$every, _elm_lang$core$Time$millisecond, _user$project$Msg$Tick),
+			_0: A2(_elm_lang$core$Time$every, _elm_lang$core$Time$millisecond * 10, _user$project$Msg$Tick),
 			_1: {
 				ctor: '::',
 				_0: A2(

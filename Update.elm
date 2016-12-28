@@ -5,44 +5,10 @@ import Model       exposing (..)
 import Types       exposing (Block(..), Pos)
 import Definitions exposing (..)
 
-isWalkable : Pos -> Level -> Bool
-isWalkable pos level =
-    let
-        tile = level.tiles
-            |> List.filter (.pos >> (==) pos)
-            |> List.head
-    in
-        tile
-        |> Maybe.map (.block >> (==) BFloor)
-        |> Maybe.withDefault False
-
-canMoveBoxes : Pos -> Pos -> List Pos -> List Tile -> Maybe (List Pos)
-canMoveBoxes player_pos (dx, dy) boxes tiles =
-    let
-        boxes_ =
-            flip List.map boxes (\(bx, by) ->
-                if (bx, by) == player_pos then
-                    (bx + dx, by + dy)
-                else
-                    (bx, by))
-
-        zip_boxes_ =
-            List.indexedMap (,) boxes_
-            |> List.map (\(i, n) -> (i + 1, n))
-
-        colided_with_box  =
-            flip List.any zip_boxes_
-                (\(i, bpos) -> flip List.any zip_boxes_
-                    (\(i2, bpos2) -> i /= i2 && bpos == bpos2))
-
-        colided_with_wall =
-            flip List.any boxes_ (\bpos ->
-                flip List.any tiles (\t -> t.pos == bpos && t.block == BWall))
-    in
-        if colided_with_box || colided_with_wall then
-            Nothing
-        else
-            Just boxes_
+type WalkStatus
+    = Won
+    | Walked Pos (List Pos)
+    | Fail
 
 update : Msg -> Model -> (Model, Cmd Msg)
 update msg model =
@@ -57,16 +23,13 @@ update msg model =
             { model | state = GSMenu } ! []
         
         Tick t ->
-            let
-                levels =
-                    flip List.map model.levels (\lvl ->
-                        { lvl | failStep =
-                            if lvl.failStep == 0 then
-                                lvl.failStep
-                            else
-                                lvl.failStep * (-1) + (if lvl.failStep > 0 then 1 else -1) })
-            in
-                { model | levels  = levels, time = t } ! []
+            { model
+            | time = t
+            , levels = -- fail animation when try to enter in an unlocked level
+                mapWhere (.failStep >> (/=) 0) (\lvl ->
+                    { lvl | failStep = -lvl.failStep + clamp -1 1 lvl.failStep })
+                    model.levels
+            } ! []
         
         Enter ->
             if model.state /= GSMenu then
@@ -96,16 +59,31 @@ update msg model =
                                              model.levels
                                 } ! []
 
-        Arrows (x, y) ->
+        Arrows offsetXY ->
             if model.state == GSMenu then
                 { model
                 | selected =
                     fixBetween
-                        (model.selected + (arrowToIconId (x, y)))
-                        (iconMin, List.length model.levels)
+                        (model.selected + (arrowToIconId offsetXY))
+                        (1, List.length model.levels)
                 } ! []
             else
-                updateWalk (x, y) model ! []
+                case walk offsetXY model.current of
+                    Won ->
+                        { model | state = GSMenu, levels = updateLevels model } ! []
+
+                    Walked pos boxes ->
+                        { model
+                        | current = let current = model.current in
+                            { current
+                            | player = pos
+                            , boxes  = boxes
+                            , steps  = model.current.steps + 1
+                            }
+                        } ! []
+
+                    Fail ->
+                        model ! []
 
         RestartLevel ->
             let
@@ -122,75 +100,71 @@ update msg model =
                 , current   = current
                 } ! []
 
-updateWalk : (Int, Int) -> Model -> Model
-updateWalk (x, y) model =
+moveBoxes : Pos -> Pos -> List Pos -> List Tile -> Maybe (List Pos)
+moveBoxes player_pos (dx, dy) boxes tiles =
     let
-        current =
-            if model.current.won then
-                model.current
-            else
-                let
-                    pos     = model.current.player
-                              |> Tuple.mapFirst ((+)x)
-                              |> Tuple.mapSecond ((+)y)
-                    boxes_  = canMoveBoxes pos (x, y)
-                                model.current.boxes model.current.tiles
-                    success = abs x + (abs y) == 1
-                           && isWalkable pos model.current
-                           && boxes_ /= Nothing
-                    won     = success
-                           && flip List.all
-                                (Maybe.withDefault model.current.boxes boxes_)
-                                (\bpos -> List.any ((==) bpos) model.current.holes)
-                in
-                    if not success then
-                        model.current
-                    else let current = model.current in
-                        { current
-                        | player = pos
-                        , boxes  = Maybe.withDefault model.current.boxes boxes_
-                        , won    = won
-                        , steps  = model.current.steps + 1
-                        }
+        cannot_walk =
+            tiles
+            |> List.filter (.pos >> (==) player_pos)
+            |> List.head
+            |> Maybe.map (.block >> (/=) BFloor)
+            |> Maybe.withDefault True
+
+        boxes_ =
+            boxes
+            |> mapWhere ((==) player_pos) (\(bx, by) -> (bx + dx, by + dy))
+            |> List.indexedMap (\i n -> (i + 1, n))
+
+        collided_with_box  =
+            flip List.any boxes_ (\(i, bpos) ->
+                flip List.any boxes_ (\(i2, bpos2) -> i /= i2 && bpos == bpos2))
+
+        collided_with_wall =
+            flip List.any boxes_ (\(_, bpos) ->
+                flip List.any tiles (\t -> t.pos == bpos && t.block == BWall))
     in
-        if not current.won then
-            { model | current = current }
+        if cannot_walk || collided_with_box || collided_with_wall then
+            Nothing
         else
-            { model | levels = updateLevels model, state = GSMenu }
+            Just <| List.map Tuple.second boxes_
+
+walk : Pos -> Level -> WalkStatus
+walk (x, y) level =
+    let
+        -- new position
+        pos =
+            (\(x_, y_) -> (x + x_, y + y_)) level.player
+
+        -- `Maybe Pos` with the list of the new box positions, if not collided
+        boxes_  =
+            moveBoxes pos (x, y) level.boxes level.tiles
+
+        -- Check if all the boxes are placed correctly
+        won =
+            boxes_
+            |> Maybe.withDefault level.boxes
+            |> List.all (\box -> List.any ((==) box) level.holes)
+    in
+        if won then
+            Won
+        else
+            boxes_
+            |> Maybe.map (Walked pos)
+            |> Maybe.withDefault Fail
 
 updateLevels : Model -> List LevelInfo
 updateLevels model =
     model.levels
-    |> mapWhere
+    |> mapWhere -- set best step and best time to the current level
         (.id >> (==) model.selected)
         (\lvl ->
             { lvl
-            | bestStep =
-                let 
-                    best_step = 
-                        if lvl.bestStep == 0 then
-                            999999
-                        else
-                            lvl.bestStep
-                in
-                    Basics.min best_step model.current.steps
-                    
+            | beat     = True
+            , bestStep = Basics.min lvl.bestStep (model.current.steps + 1)
             , bestTime =
-                let
-                    best_time =
-                        if lvl.bestTime == 0.0 then
-                            999999.0
-                        else
-                            lvl.bestTime
-                in
-                    model.time - model.timeStart
-                    |> flip (/) 100
-                    |> round
-                    |> toFloat
-                    |> flip (/) 10
-                    |>  Basics.min best_time
-            })
-    |> mapWhere
+                model.time - model.timeStart
+                |> flip (/) 100 >> round >> toFloat >> flip (/) 10
+                |> Basics.min lvl.bestTime })
+    |> mapWhere -- unlock next level
         (.id >> (==) (model.selected + 1))
         (\lvl -> { lvl | unlocked = True })
-

@@ -19,6 +19,7 @@ type alias LevelInfo =
     { id       : Int
     , level    : Level
     , unlocked : Bool
+    , beat     : Bool
     , bestStep : Int
     , bestTime : Time
     , failStep : Int -- interface only
@@ -39,20 +40,12 @@ type alias Level =
     , holes     : List Pos
     , boxes     : List Pos
     , player    : Pos
-    , won       : Bool
     , steps     : Int
     }
 
 init : Model
 init =
-    Model
-        levels
-        level_01
-        GSMenu
-        1
-        0.0
-        0.0
-        False
+    Model levels level_01 GSMenu 1 0.0 0.0 False
 
 level_01 : Level
 level_01 =
@@ -66,7 +59,7 @@ levels : List LevelInfo
 levels =
     List.indexedMap
             (\i level_str ->
-                LevelInfo (i + 1) (strToLevel level_str) (i == 0) 0 0 0)
+                LevelInfo (i + 1) (strToLevel level_str) (i == 0) False 999999 999999.0 0)
             level_list_str
 
 
@@ -104,4 +97,4 @@ strToLevel str =
               |> List.head
               |> Maybe.withDefault (5, 5)
     in
-        Level tiles holes boxes player False 0
+        Level tiles holes boxes player 0

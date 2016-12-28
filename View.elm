@@ -91,7 +91,7 @@ drawLevelIcon selected levelInfo =
                     [ text <| toString <| levelInfo.id ]
             , text_ [ x <| toString <| sX - 4, y <| toString <| sY + 64
                     , fill "black", fontSize "12"
-                    ,   if levelInfo.unlocked && levelInfo.bestStep > 0 then
+                    ,   if levelInfo.beat && levelInfo.bestStep > 0 then
                             visibility "show"
                         else
                             visibility "hidden"
@@ -99,7 +99,7 @@ drawLevelIcon selected levelInfo =
                     [ text <| "S " ++ (toString <| levelInfo.bestStep) ]
             , text_ [ x <| toString <| sX + 24, y <| toString <| sY + 64
                     , fill "black", fontSize "12"
-                    ,   if levelInfo.unlocked && levelInfo.bestTime > 0 then
+                    ,   if levelInfo.beat && levelInfo.bestTime > 0 then
                             visibility "show"
                         else
                             visibility "hidden"
